@@ -3,6 +3,9 @@ This template is used for the index page.
 It can be used also as the home page or the default page.
 --}}
 
+{{!-- This block sets the language (instead of site.lang) --}}
+{{#contentFor "lang"}}fr{{/contentFor}}
+
 {{!-- This block sets the language switcher --}}
 {{> "lang-switcher"}}
 

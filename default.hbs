@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{@site.lang}}">
+<html lang="{{block "lang"}}">
   <head>
     {{!-- Document Settings --}}
     <meta charset="utf-8" />
@@ -78,7 +78,7 @@
     {{!-- This #block helper will inject a stylesheet for a specific page --}}
     {{{block "styles"}}}
 
-    {{!-- This #block helper will pull data from the hero partial 
+    {{!-- This #block helper will pull data from the hero partial
     to inject styles of the hero image to make it responsive --}}
     {{{block "herobackground"}}}
 
