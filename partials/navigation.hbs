@@ -2,19 +2,22 @@
 This navigation template is shared across all the pages.
 Also it includes the big submenu.
 --}}
-
 {{#if isSecondary}}
   <ul class="m-secondary-menu">
-    {{#foreach navigation}}
-      <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
-        <a href="{{url absolute="true"}}">{{label}}</a>
-      </li>
-    {{/foreach}}
+    {{#get "pages" limit="all" order="title asc" filter="tag:hash-{{langCode}}-nav2"}}
+      {{#foreach pages}}
+        <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
+          <a href="{{url absolute="true"}}">{{title}}</a>
+        </li>
+      {{/foreach}}
+    {{/get}}
   </ul>
 {{else}}
-  {{#foreach navigation}}
-    <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
-      <a href="{{url absolute="true"}}">{{label}}</a>
-    </li>
-  {{/foreach}}
+    {{#get "pages" limit="all" order="title asc" filter="tag:hash-{{langCode}}-nav"}}
+      {{#foreach pages}}
+        <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
+          <a href="{{url absolute="true"}}">{{title}}</a>
+        </li>
+      {{/foreach}}
+    {{/get}}
 {{/if}}

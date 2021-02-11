@@ -6,7 +6,7 @@ This footer template is shared across all the pages.
   <div class="m-footer__content">
     {{#if @site.secondary_navigation}}
       <nav class="m-footer__nav-secondary" role="navigation" aria-label="{{t "Secondary menu in footer"}}">
-        {{navigation type="secondary"}}
+        {{> "navigation" langCode=langCode isSecondary=true}}
       </nav>
     {{/if}}
     <nav class="m-footer-social">

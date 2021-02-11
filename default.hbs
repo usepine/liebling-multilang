@@ -99,8 +99,8 @@
     {{!-- Search form --}}
     {{> search}}
 
-    {{!-- The footer --}}
-    {{> footer}}
+    {{!-- The footer (content generated in the language-specific index templates) --}}
+    {{{block "footer"}}}
 
     {{!-- Notifications alerts --}}
     {{#if @labs.members}}

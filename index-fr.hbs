@@ -3,6 +3,11 @@ This template is used for the index page.
 It can be used also as the home page or the default page.
 --}}
 
+{{!-- Included in the layout but content generated here, because we know the language here --}}
+{{#contentFor "footer"}}
+{{> footer langCode="fr"}}
+{{/contentFor}}
+
 {{!-- This block sets the language (instead of site.lang) --}}
 {{#contentFor "lang"}}fr{{/contentFor}}
 
@@ -27,7 +32,7 @@ into the {body} of the default.hbs template --}}
 {{!< default}}
 
 {{!-- Special header.hbs partial to generate the <header> tag --}}
-{{> header background=@site.cover_image}}
+{{> header background=@site.cover_image langCode="fr"}}
 
 <main class="main-wrap">
   {{!-- Inject styles of the hero image to make it responsive --}}

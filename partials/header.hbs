@@ -44,7 +44,7 @@ This header template is shared across all the pages.
                 </li>
               {{/if}}
               {{#if @site.navigation}}
-                {{navigation}}
+                {{> "navigation" langCode=langCode isSecondary=false}}
               {{/if}}
               {{#if @site.secondary_navigation}}
                 <li class="more">
@@ -135,7 +135,7 @@ This header template is shared across all the pages.
 
   {{#if @site.secondary_navigation}}
     <div id="secondary-navigation-template" style="display: none;">
-      {{navigation type="secondary"}}
+      {{> "navigation" langCode=langCode isSecondary=true}}
     </div>
   {{/if}}
 </header>
