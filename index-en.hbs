@@ -3,6 +3,9 @@ This template is used for the index page.
 It can be used also as the home page or the default page.
 --}}
 
+{{!-- This block sets the language switcher --}}
+{{> "lang-switcher"}}
+
 {{!-- This block preloads specific assets for the index page --}}
 {{#contentFor "preload"}}
   <link rel="preload" href="{{asset "css/home.css"}}" as="style" />
@@ -38,6 +41,7 @@ into the {body} of the default.hbs template --}}
     {{#if @labs.members}}
       <a href="{{@site.url}}/newsletter" class="m-button filled">Subscribe</a>
     {{/if}}
+    <p>{{{block "langSwitcher"}}}</p>
   </div>
   </section>
   <div class="l-content">
