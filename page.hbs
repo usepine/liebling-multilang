@@ -2,6 +2,15 @@
 This template is used for the posts that are marked as pages.
 --}}
 
+{{#post}}
+  {{#has tag="#fr" visibility="internal"}}
+    {{> "fr" headerBackground=feature_image}}
+  {{else}}
+    {{> "en" headerBackground=feature_image}}
+  {{/has}}
+{{/post}}
+
+
 {{!-- This block preloads specific assets for the post page --}}
 {{#contentFor "preload"}}
   <link rel="preload" href="{{asset "css/post.css"}}" as="style" />
@@ -18,9 +27,7 @@ into the {body} of the default.hbs template --}}
 {{!< default}}
 
 {{!-- Special header.hbs partial to generate the <header> tag --}}
-{{#post}}
-  {{> header background=feature_image}}
-{{/post}}
+{{{block "header"}}}
 
 <main class="main-wrap">
   {{!-- Everything inside the #post tags pulls data from the post --}}
