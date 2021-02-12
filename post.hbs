@@ -19,7 +19,11 @@ into the {body} of the default.hbs template --}}
 
 {{!-- Special header.hbs partial to generate the <header> tag --}}
 {{#post}}
-  {{> header background=feature_image}}
+  {{#has tag="#en" visibility="internal"}}
+    {{> header background=feature_image langCode="en"}}
+  {{else has tag="#fr" visibility="internal"}}
+    {{> header background=feature_image langCode="fr"}}
+  {{/has}}
 {{/post}}
 
 <main class="main-wrap">

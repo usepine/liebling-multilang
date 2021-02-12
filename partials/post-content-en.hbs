@@ -9,7 +9,11 @@
           <a href="{{primary_tag.url}}" class="m-heading__meta__tag">{{primary_tag.name}}</a>
           <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
         {{/if}}
+
         <span class="m-heading__meta__time">{{date published_at}}</span>
+        <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+
+        {{> "post-lang-switcher"}}
       </div>
     </header>
     <div class="pos-relative js-post-content">
