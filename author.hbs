@@ -2,6 +2,10 @@
 This template is used for the author page.
 --}}
 
+{{#author}}
+{{> "en" headerBackground=cover_image}}
+{{/author}}
+
 {{!-- This block preloads specific assets for the author page --}}
 {{#contentFor "preload"}}
   <link rel="preload" href="{{asset "css/listing.css"}}" as="style" />
@@ -17,9 +21,7 @@ into the {body} of the default.hbs template --}}
 {{!< default}}
 
 {{!-- Special header.hbs partial to generate the <header> tag --}}
-{{#author}}
-  {{> header background=cover_image}}
-{{/author}}
+{{{block "header"}}}
 
 <main class="main-wrap">
   {{!-- Everything inside the #author tags pulls data from the author --}}
@@ -75,7 +77,7 @@ into the {body} of the default.hbs template --}}
       </div>
     </section>
   {{/author}}
-  
+
   <div class="l-content">
     <div class="l-wrapper" data-aos="fade-up" data-aos-delay="300">
       <div class="l-grid centered">
