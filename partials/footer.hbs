@@ -27,10 +27,10 @@ This footer template is shared across all the pages.
     <p class="m-footer-copyright">
       <span>{{@site.title}} &copy; {{date format="YYYY"}}</span>
       <span>&nbsp; &bull; &nbsp;</span>
-      <span>{{t "Published with"}} <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+      <span>{{block "hostedWith"}} <a href="https://www.usepine.com" target="_blank" rel="noopener">Pine</a></span>
     </p>
     <p class="m-footer-copyright jslicense">
-      <a href="{{asset "html/javascript.html"}}" rel="jslicense">{{t "JavaScript license information"}}</a>
+      <a href="{{asset "html/javascript.html"}}" rel="jslicense">{{block "jsLicenceInformation"}}</a>
     </p>
   </div>
 </footer>
