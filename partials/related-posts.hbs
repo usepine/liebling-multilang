@@ -1,0 +1,58 @@
+{{#contentFor "recommendedLabel"}}{{recommendedLabel}}{{/contentFor}}
+{{#contentFor "nextLabel"}}{{nextLabel}}{{/contentFor}}
+{{#contentFor "previousLabel"}}{{previousLabel}}{{/contentFor}}
+{{#contentFor "noPostsFoundTitle"}}{{noPostsFoundTitle}}{{/contentFor}}
+{{#contentFor "noPostsFoundBody"}}{{noPostsFoundBody}}{{/contentFor}}
+
+{{!-- Recommending posts by the same author, but not with the same tags,
+      because it is impossible to filter on [public-tags-only] when in the #post
+      context --}}
+{{#get "posts" limit="3" filter="authors:{{primary_author.slug}}+tag:hash-{{langCode}}+id:-{{id}}" include="tags,authors" as |related|}}
+  {{#if posts.length}}
+    <section class="m-recommended">
+      <div class="l-wrapper in-recommended">
+        <h3 class="m-section-title in-recommended">{{block "recommendedLabel"}}</h3>
+        <div class="m-recommended-articles">
+          <div class="m-recommended-slider glide js-recommended-slider">
+            <div class="glide__track" data-glide-el="track">
+              <div class="glide__slides">
+                {{!-- The tag below iterates over all the related posts --}}
+                {{> "loop"}}
+              </div>
+            </div>
+            <div data-glide-el="controls" class="glide__arrows js-controls">
+              <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="{{block "previousLabel"}}">
+                <span class="icon-arrow-left" aria-hidden="true"></span>
+              </button>
+              <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="{{block "nextLabel"}}">
+                <span class="icon-arrow-right" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {{else}}
+    <section class="m-recommended">
+      <div class="l-wrapper in-recommended">
+        <h3 class="m-section-title in-recommended">{{block "recommendedLabel"}}</h3>
+        <div class="m-recommended-articles">
+          <div class="m-recommended-slider glide js-recommended-slider">
+            <div class="glide__track" data-glide-el="track">
+              <div class="glide__slides">
+                <div class="m-recommended-slider__item glide__slide">
+                  <div class="m-heading no-margin">
+                    <h3>{{block "noPostsFoundTitle"}}</h3>
+                    <p>
+                      {{block "noPostsFoundBody"}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
