@@ -3,17 +3,17 @@ This template is used for the post page.
 --}}
 
 {{#post}}
-  {{#has tag="#en" visibility="internal"}}
-    {{> "en" headerBackground=feature_image}}
-
-    {{#contentFor "relatedPosts"}}
-      {{> "related-posts" langCode="en" }}
-    {{/contentFor}}
-  {{else has tag="#fr" visibility="internal"}}
+  {{#has tag="#fr" visibility="internal"}}
     {{> "fr" headerBackground=feature_image}}
 
     {{#contentFor "relatedPosts"}}
       {{> "related-posts" langCode="fr" }}
+    {{/contentFor}}
+  {{else}}
+    {{> "en" headerBackground=feature_image}}
+
+    {{#contentFor "relatedPosts"}}
+      {{> "related-posts" langCode="en" }}
     {{/contentFor}}
   {{/has}}
 {{/post}}

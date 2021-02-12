@@ -2,12 +2,6 @@
 This header template is shared across all the pages.
 --}}
 
-{{#has tag="#en" visibility="internal"}}
-
-{{else has tag="#fr" visibility="internal"}}
-
-{{/has}}
-
 <header class="m-header {{#if background}}with-picture{{/if}} js-header">
   <div class="m-mobile-topbar" data-aos="fade-down">
     <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="{{block "openMenu"}}">
