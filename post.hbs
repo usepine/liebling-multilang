@@ -2,6 +2,22 @@
 This template is used for the post page.
 --}}
 
+{{#post}}
+  {{#has tag="#en" visibility="internal"}}
+    {{> "en" headerBackground=feature_image}}
+
+    {{#contentFor "relatedPosts"}}
+      {{> "related-posts" langCode="en" }}
+    {{/contentFor}}
+  {{else has tag="#fr" visibility="internal"}}
+    {{> "fr" headerBackground=feature_image}}
+
+    {{#contentFor "relatedPosts"}}
+      {{> "related-posts" langCode="fr" }}
+    {{/contentFor}}
+  {{/has}}
+{{/post}}
+
 {{!-- This block preloads specific assets for the post page --}}
 {{#contentFor "preload"}}
   <link rel="preload" href="{{asset "css/post.css"}}" as="style" />
@@ -18,13 +34,7 @@ into the {body} of the default.hbs template --}}
 {{!< default}}
 
 {{!-- Special header.hbs partial to generate the <header> tag --}}
-{{#post}}
-  {{#has tag="#en" visibility="internal"}}
-    {{> header background=feature_image langCode="en"}}
-  {{else has tag="#fr" visibility="internal"}}
-    {{> header background=feature_image langCode="fr"}}
-  {{/has}}
-{{/post}}
+{{{block "header"}}}
 
 <main class="main-wrap">
   {{#post}}
@@ -37,29 +47,11 @@ into the {body} of the default.hbs template --}}
     <div class="l-content in-post">
       {{!-- Everything inside the #post tags pulls data from the post --}}
       {{#post}}
-        {{#has tag="#en" visibility="internal"}}
-          {{#contentFor "lang"}}en{{/contentFor}}
-          {{> "post-content-en"}}
-        {{else has tag="#fr" visibility="internal"}}
-          {{#contentFor "lang"}}fr{{/contentFor}}
-          {{> "post-content-fr"}}
-        {{else}}
-          {{!-- Previews need a default fallback --}}
-          {{#contentFor "lang"}}en{{/contentFor}}
-          {{> "post-content-en"}}
-        {{/has}}
+        {{> "post-content"}}
       {{/post}}
-      {{!-- Related posts --}}
 
-      {{#post}}
-        {{#has tag="#en" visibility="internal"}}
-          {{> "related-posts" langCode="en" previousLabel="Previous" nextLabel="Next" recommendedLabel="Recommended for you" noPostsFoundBody="Apparently there are no posts at the moment, check again later." noPostsFoundTitle="No posts found" }}
-        {{else has tag="#fr" visibility="internal"}}
-          {{> "related-posts" langCode="fr" previousLabel="Précédente" nextLabel="Suivante" recommendedLabel="Recommandé pour vous" noPostsFoundBody="Apparemment il n'y a pas d'article pour le moment, vérifiez plus tard." noPostsFoundTitle="Aucun article trouvé" }}
-        {{else}}
-          {{> "related-posts" langCode="en" previousLabel="Previous" nextLabel="Next" recommendedLabel="Recommended for you" noPostsFoundBody="Apparently there are no posts at the moment, check again later." noPostsFoundTitle="No posts found" }}
-        {{/has}}
-      {{/post}}
+      {{!-- Related posts --}}
+      {{{block "relatedPosts"}}}
     </div>
   </article>
 </main>

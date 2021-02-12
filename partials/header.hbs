@@ -3,29 +3,9 @@ This header template is shared across all the pages.
 --}}
 
 {{#has tag="#en" visibility="internal"}}
-  {{#contentFor "openSubmenu"}}Open submenu{{/contentFor}}
-  {{#contentFor "openMenu"}}Open menu{{/contentFor}}
-  {{#contentFor "openSearch"}}Open search{{/contentFor}}
-  {{#contentFor "closeMenu"}}Close menu{{/contentFor}}
-  {{#contentFor "mainMenu"}}Main menu{{/contentFor}}
-  {{#contentFor "more"}}More{{/contentFor}}
-  {{#contentFor "recentArticles"}}Recent articles{{/contentFor}}
-  {{#contentFor "noRecentArticlesFound"}}No recent articles found{{/contentFor}}
-  {{#contentFor "tags"}}Tags{{/contentFor}}
-  {{#contentFor "noTagsFound"}}No tags found{{/contentFor}}
-  {{#contentFor "toggleDarkMode"}}Toggle dark mode{{/contentFor}}
+
 {{else has tag="#fr" visibility="internal"}}
-  {{#contentFor "openSubmenu"}}Ouvrir le sous-menu{{/contentFor}}
-  {{#contentFor "openMenu"}}Ouvrir le menu{{/contentFor}}
-  {{#contentFor "openSearch"}}Ouvrir le menu de recherche{{/contentFor}}
-  {{#contentFor "closeMenu"}}Fermer le menu{{/contentFor}}
-  {{#contentFor "mainMenu"}}Menu principal{{/contentFor}}
-  {{#contentFor "more"}}Plus{{/contentFor}}
-  {{#contentFor "recentArticles"}}Articles récents{{/contentFor}}
-  {{#contentFor "noRecentArticlesFound"}}Aucun article récent trouvé{{/contentFor}}
-  {{#contentFor "tags"}}Mots clés{{/contentFor}}
-  {{#contentFor "noTagsFound"}}Aucun mot clé trouvé{{/contentFor}}
-  {{#contentFor "toggleDarkMode"}}Basculer en mode sombre{{/contentFor}}
+
 {{/has}}
 
 <header class="m-header {{#if background}}with-picture{{/if}} js-header">

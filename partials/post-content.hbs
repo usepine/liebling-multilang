@@ -27,7 +27,7 @@
             class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
             <span class="icon-twitter" aria-hidden="true"></span>
           </a>
-          <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="{{t "Scroll to top"}}">
+          <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="{{block "scrollToTop"}}">
             <span class="icon-arrow-top" aria-hidden="true"></span>
             <svg aria-hidden="true">
               <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
@@ -39,7 +39,7 @@
       {{!-- List of tags  --}}
       {{#if tags}}
         <section class="m-tags in-post">
-          <h3 class="m-submenu-title">{{t "Tags"}}</h3>
+          <h3 class="m-submenu-title">{{block "tags"}}</h3>
           <ul>
             {{#foreach tags}}
               <li>
@@ -58,9 +58,9 @@
     <div class="l-wrapper in-post">
       <div class="m-subscribe-section__content">
         <div class="m-subscribe-section__text">
-          <h4 class="m-subscribe-section__title">{{t "Subscribe to our newsletter"}}</h4>
+          <h4 class="m-subscribe-section__title">{{block "subscribeToNewsletter"}}</h4>
           <p class="m-subscribe-section__description">
-            {{t "Get the latest posts delivered right to your inbox."}}
+            {{block "getTheLatestPostsDelivered"}}
           </p>
         </div>
         <div class="m-subscribe-section__form">
@@ -83,9 +83,9 @@
     <div class="l-wrapper in-post">
       <div class="m-subscribe-section__content">
         <div class="m-subscribe-section__text">
-          <h4 class="m-subscribe-section__title">{{t "Subscribe to our newsletter"}}</h4>
+          <h4 class="m-subscribe-section__title">{{block "subscribeToNewsletter"}}</h4>
           <p class="m-subscribe-section__description">
-            {{t "Get the latest posts delivered right to your inbox."}}
+            {{block "getTheLatestPostsDelivered"}}
           </p>
         </div>
         <div class="m-subscribe-section__form">
@@ -121,7 +121,7 @@
       <ul class="m-author-links">
         {{#if primary_author.website}}
           <li>
-            <a href="{{primary_author.website}}" target="_blank" rel="noopener" aria-label="{{t "Website"}}">
+            <a href="{{primary_author.website}}" target="_blank" rel="noopener" aria-label="{{block "website"}}">
               <span class="icon-globe" aria-hidden="true"></span>
             </a>
           </li>

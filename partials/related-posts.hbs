@@ -7,7 +7,7 @@
 {{!-- Recommending posts by the same author, but not with the same tags,
       because it is impossible to filter on [public-tags-only] when in the #post
       context --}}
-{{#get "posts" limit="3" filter="authors:{{primary_author.slug}}+tag:hash-{{langCode}}+id:-{{id}}" include="tags,authors" as |related|}}
+{{#get "posts" limit="all" filter="authors:{{primary_author.slug}}+tag:hash-{{langCode}}+id:-{{id}}" include="tags,authors"}}
   {{#if posts.length}}
     <section class="m-recommended">
       <div class="l-wrapper in-recommended">
