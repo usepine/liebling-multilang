@@ -8,6 +8,14 @@ Currently supported languages:
 * 🇺🇸 English
 * 🇫🇷 Français
 
+## Preview
+
+You can see a live demo here: <https://lieblingdemo.i.usepine.com>
+
+Here is a blog post that outlines what goes into creating multi-language Ghost themes:
+
+- https://www.usepine.com/blog/en/creating-a-multi-language-theme/
+
 ## How to use?
 
 Multi-language support is achieved by systematic tagging and custom routes/redirects.
@@ -72,10 +80,6 @@ Alternatively, if you use Netlify, you can use [language-based redirects](https:
   section performs post lookup by author, instead of by similar tags. This is because the language tag
   gets included as well, which leads to every post in the same language being returned.
 - the author and tag pages default to English
-
-## Preview
-
-You can see a live demo here: <https://lieblingdemo.i.usepine.com>
 
 ## Features
 
