@@ -22,6 +22,8 @@ Multi-language support is achieved by systematic tagging and custom routes/redir
 
 ### Set up routes and redirects
 
+*You can use the included redirects.json and routes.yaml sample files*
+
 You need to set up custom collection routes,
 which filter on the language tag (e.g. `hash-en` or `hash-fr` etc.)
 
