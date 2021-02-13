@@ -1,28 +1,90 @@
-# Liebling
+# Liebling Multilang
 
-Liebling is a beautiful and clean Ghost theme that is easy and comfortable to use. **It's free** and you can use it for any kind of content you might have. Now with dark mode 🌓!
+Liebling Multilang is a fork of the [Liebling](https://github.com/eddiesigner/liebling/) Ghost theme,
+which refactors it to support multiple languages in a single Ghost website.
 
-If you find this theme useful, please consider to make a donation to support its development! 🙏🏼
+Currently supported languages:
 
-<a href="https://www.buymeacoffee.com/eddiesigner" target="_blank"><img src="https://res.cloudinary.com/edev/image/upload/v1583011476/button_y8hgt8.png" alt="Donate" style="width: 250px !important; height: 60px !important;" width="250" height="60"></a>
+* 🇺🇸 English
+* 🇫🇷 Français
+
+## How to use?
+
+Multi-language support is achieved by systematic tagging and custom routes/redirects.
+
+### Set up routes and redirects
+
+You need to set up custom collection routes,
+which filter on the language tag (e.g. `hash-en` or `hash-fr` etc.)
+
+```
+collections:
+  /en/:
+    permalink: /en/{slug}/
+    template: index-en
+    filter: 'tag:hash-en'
+  /fr/:
+    permalink: /fr/{slug}/
+    template: index-fr
+    filter: 'tag:hash-fr'
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
+```
+
+Then set up a redirect from the root to the default language:
+
+```
+[{
+  "from":"^/","to":"/en","permanent":true
+}]
+```
+
+Alternatively, if you use Netlify, you can use [language-based redirects](https://docs.netlify.com/routing/redirects/redirect-options/#redirect-by-country-or-language).
+
+
+### Tagging
+
+- Posts and Pages
+  - tag English language posts with `#en`
+  - tag French language posts with `#fr`
+  - to enable language switching for specific posts, the first tag on every post is used as a "post identifier" tag. This means:
+    - multiple posts which have the same content (but in different languages) should always have
+    the same first tag (it should be an internal tag so it does not show up in tag lists)
+    - two posts which do not have the same content, should always have different first tags
+    - for example, two posts might have tags `#post-1 #en` and `#post-1 #fr`. These posts will show up
+      in the English and French sections respectively, and allow language switching. If another post is
+      written, which is unrelated, its tag list should begin with `#post-2 ...`
+    - the actual naming scheme of the first tag does not matter (it can be `#post-1` or `#20210101-01-v1` or `#nuclear-powerplant-design-dissection`)
+- Navigation
+  - **do not use the built-in Ghost navigation page** (it is not used because it
+    does not support localization)
+  - instead, create Pages that are tagged with:
+    - `#en-nav` (for English primary navigation)
+    - `#en-nav2` (for English secondary navigation)
+    - `#fr-nav` (for French primary navigation)
+    - `#fr-nav2` (for French secondary navigation)
+
+## Limitations
+
+- unlike the original [Liebling](https://github.com/eddiesigner/liebling/) theme, the *Recommended posts*
+  section performs post lookup by author, instead of by similar tags. This is because the language tag
+  gets included as well, which leads to every post in the same language being returned.
+- the author and tag pages default to English
 
 ## Preview
 
-You can see a live demo here: [https://liebling.eduardogomez.io](https://liebling.eduardogomez.io)
-
-![](https://res.cloudinary.com/edev/image/upload/v1583792928/liebling/liebling-promo-desktop.jpg)
-<br><br>
-![](https://res.cloudinary.com/edev/image/upload/v1570370297/liebling/liebling-promo-mobile.jpg)
-
-## Download
-
-To get the latest version please head over the [releases page](https://github.com/eddiesigner/liebling/releases) and download the file `liebling.zip` of the latest release.
-
-**IMPORTANT: To know how to enable the search, comments, newsletter and more, please head to the [Wiki](https://github.com/eddiesigner/liebling/wiki).**
-
-From now on, this theme is only compatible with Ghost 3
+You can see a live demo here: <https://lieblingdemo.i.usepine.com>
 
 ## Features
+
+This theme supports the same features as the original [Liebling](https://github.com/eddiesigner/liebling/) theme.
+
+### Supported languages
+
+* 🇺🇸 English
+* 🇫🇷 Français
 
 ### General features
 
@@ -66,67 +128,12 @@ From now on, this theme is only compatible with Ghost 3
 * Reading progress indicator
 * RTL language support
 
-## Localization
+## Credits and Related
 
-* English
-* Spanish
-* German by [D3473R](https://github.com/D3473R)
-* Informal german by [D3473R](https://github.com/D3473R)
-* Bulgarian by [clappingmonkey](https://github.com/clappingmonkey)
-* Vietnamese by [hiensarahly](https://github.com/hiensarahly)
-* Italian by [vignini](https://github.com/vignini)
-* French by [v1nc3nt-fr](https://github.com/v1nc3nt-fr)
-* Informal french by [v1nc3nt-fr](https://github.com/v1nc3nt-fr)
-* Portuguese by [ivomota](https://github.com/ivomota)
-* Arabic by [allamiro](https://github.com/allamiro)
-* Polish by [otlet](https://github.com/otlet)
-* Brazilian portuguese by [pedrinholula](https://github.com/pedrinholula)
-* Russian by [stereohorse](https://github.com/stereohorse)
-* Kyrgyz by [januchaos](https://github.com/januchaos)
-* Hebrew by [cohen604](https://github.com/cohen604)
-* Turkish by [mskoroglu](https://github.com/mskoroglu)
-* Romanian by [dsecareanu](https://github.com/dsecareanu)
-* Chinese Simplified by [IvyB](https://github.com/IvyB)
-* Indonesian by [iqbalbinsb](https://github.com/iqbalbinsb), [khannedy](https://github.com/khannedy)
-* Lithuanian by [pintom](https://github.com/pintom)
-* Dutch by [Qballjos](https://github.com/Qballjos)
-* Traditional Chinese by [weixiang](https://github.com/weixiang)
-* Persian (Farsi) by [Aminoiz](https://github.com/Aminoiz)
-* Ukrainian by [partizan007](https://github.com/partizan007)
-* Kazakh by [arshyn-t](https://github.com/arshyn-t)
+* [Liebling](https://github.com/eddiesigner/liebling) - the Ghost theme that was used as the basis for this multi language theme.
 
-## Tests performed
-
-* W3C Markup Validation: [Correct validation](https://validator.w3.org/nu/?doc=https%3A%2F%2Fliebling.eduardogomez.io%2F)
-* Ghost GScan: [100/100 points](https://gscan.ghost.org/)
-* GTmetrix PageSpeed Score: **A (97%)**
-* PageSpeed Insights: **94/100** (mobile) **99/100** (desktop)
-* Pingdom Performance Grade: **A 91**
-
-## Theme development
-
-Thanks to [D3473R](https://github.com/D3473R) 💪🏼 for creating a development environment with Docker. From now on you can work on this theme without installing a Ghost instance on your local machine. With two commands you have an instant development setup and you can build the theme for production.
-
-Please take a look to this page to see how it works: https://github.com/eddiesigner/liebling/wiki/Theme-development-with-Docker
-
-## Help and Support
-
-If you have any questions or troubles with this product, please feel free to open an issue [here](https://github.com/eddiesigner/liebling/issues).
-
-## Contributing
-
-Contributions are very welcome. First, please read the [Pull Request Guidelines](https://github.com/eddiesigner/liebling/wiki/Pull-Request-Guidelines) on the wiki.
-
-## Related
-
-* [Firma](https://gum.co/ZXLha) - Ghost theme that can be used by startups to large companies to publish any kind of articles related to their business. It stands out for its clean design and is able to adapt to any company's identity.
-
-* [Weiss Pro](https://eduardogomez.io/weiss-pro/) - Modern and beautiful Ghost theme ready to make your content shine.
+* [Pine](https://www.usepine.com) - an easy to use Ghost hosting provider.
 
 ## License
 
-Copyright (c) 2019-2020 Eduardo Gómez. Released under the [MIT license](https://github.com/eddiesigner/liebling/blob/master/LICENSE).
-
-## Credits
-
-All the photos I used in this theme were taken from [Unsplash](https://unsplash.com)
+Released under the [MIT license](LICENSE) like the original theme.
