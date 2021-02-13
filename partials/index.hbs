@@ -22,7 +22,7 @@
   <div class="l-content">
     <div class="l-wrapper" data-aos="fade-up" data-aos-delay="300">
       <div class="l-grid centered">
-        {{#get "posts" filter="featured:true" include="authors,tags" limit="5" as |featured|}}
+        {{#get "posts" filter="featured:true+tag:hash-{{langCode}}" include="authors,tags" limit="5" as |featured|}}
           {{#if featured}}
             <div class="m-featured-slider glide js-featured-slider">
               <div class="glide__track" data-glide-el="track">
@@ -91,7 +91,9 @@
           {{/if}}
         {{/get}}
         {{!-- The tag below iterates over all the posts --}}
-        {{> "loop"}}
+        {{#get "posts" filter="featured:false+tag:hash-{{langCode}}" include="authors,tags" limit="5" as |featured|}}
+          {{> "loop"}}
+        {{/get}}
       </div>
     </div>
     {{!-- Links to Previous/Next posts --}}
