@@ -1,1 +1,29 @@
-<a href="/en/">en</a>
+<h1>You need to modify the routes</h1>
+
+Use a routes.yaml file similar to this:
+
+<pre>
+collections:
+  /en/:
+    permalink: /en/{slug}/
+    template: index-en
+    filter: 'tag:hash-en'
+  /fr/:
+    permalink: /fr/{slug}/
+    template: index-fr
+    filter: 'tag:hash-fr'
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
+</pre>
+
+And a redirects.json file like this:
+
+<pre>
+[{
+  "from": "^/" ,
+  "to":  "/en/",
+  "permanent": true
+}]
+</pre>
